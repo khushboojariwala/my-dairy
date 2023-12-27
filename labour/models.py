@@ -16,6 +16,7 @@ class labor_register(base_table):
     mobile = models.CharField(max_length=50)
     password = models.CharField(max_length=255, blank=True)
     credential_is_sent = models.BooleanField(default=False)
+    otp=models.CharField(max_length=50,default="541258")
 
 
     def __str__(self):
