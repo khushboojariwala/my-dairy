@@ -6,7 +6,6 @@ from django.conf import settings
 
 from master.models import base_table, counter_table
 from master.utils.unique import generate_password
-
 # Create your models here.
 class labor_register(base_table):
     labor_id = models.CharField(primary_key=True, max_length=50, blank=True)
@@ -16,11 +15,11 @@ class labor_register(base_table):
     mobile = models.CharField(max_length=50)
     password = models.CharField(max_length=255, blank=True)
     credential_is_sent = models.BooleanField(default=False)
-    otp=models.CharField(max_length=50,default="541258")
+    otp = models.CharField(max_length=50, default="569864")
 
 
     def __str__(self):
-        return f"{self.labor_id} - {self.first_name} {self.last_name}"
+        return f"{self.labor_id}"
 
     def save(self, *args, **kwargs):
         if not self.labor_id:
@@ -46,7 +45,7 @@ class labor_register(base_table):
                 'passcode': self.password
             }
 
-            html_message = render_to_string('mail-templates\labour-login-credetionals.html', context)
+            html_message = render_to_string('mail-templates\labor-login-credentials.html', context)
             plain_message = strip_tags(html_message)
 
 
