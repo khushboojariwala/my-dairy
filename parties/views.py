@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import task
+from django.contrib import messages
 # Create your views here.
 
 def add_task(request):
@@ -17,7 +18,7 @@ def add_task(request):
             total_payment=total_payment_,
         )
         new_task.save()
-        print("Task added")
+        messages.info(request, 'Task Added.')
         return redirect('tasks_view')
 
         # print(party_id, title, content, total_payment)

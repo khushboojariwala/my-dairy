@@ -110,7 +110,7 @@ Parties
               No parties available.
             </td>
           </tr>
-          
+
           {% else %}
           {% for party in parties %}
           <tr class="bg-white dark:bg-gray-800">
@@ -131,9 +131,11 @@ Parties
             </td>
             <td class="px-6 py-4">
               <div class="flex">
-                <a href="{% url 'update_party_details' id=party.id %}" class="text-blue-500"><i class="fa fa-pencil-square-o fa-2x mr-2" aria-hidden="true"></i></a>
+                <a href="{% url 'update_party_details' id=party.id %}" class="text-blue-500"><i
+                    class="fa fa-pencil-square-o fa-2x mr-2" aria-hidden="true"></i></a>
                 |
-                <a href="{% url 'delete_party' id=party.id %}" class="text-red-500"><i class="fa fa-trash fa-2x ml-2" aria-hidden="true"></i></a>
+                <a href="{% url 'delete_party' id=party.id %}" class="text-red-500"><i class="fa fa-trash fa-2x ml-2"
+                    aria-hidden="true"></i></a>
               </div>
             </td>
           </tr>
@@ -142,6 +144,8 @@ Parties
         </tbody>
       </table>
     </div>
+
+
   </div>
 </div>
 

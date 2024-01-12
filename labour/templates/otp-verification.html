@@ -39,6 +39,22 @@
 
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+              <div class="{% if message.tags == 'success' %}bg-green-100 border-l-4 border-green-500 text-green-700{% elif message.tags == 'info' %}bg-blue-100 border-l-4 border-blue-500 text-blue-700{% elif message.tags == 'warning' %}bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700{% elif message.tags == 'error' %}bg-red-100 border-l-4 border-red-500 text-red-700{% else %}bg-gray-100 border-l-4 border-gray-500 text-gray-700{% endif %} p-4 mb-4 relative " role="alert">
+                  <div class="flex justify-between items-center">
+                      <p class="flex-grow">{{ message }}</p>
+                      <button type="button" class="text-gray-500 hover:text-gray-700 focus:outline-none mt-1 mr-1" onclick="this.parentElement.parentElement.style.display='none'">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 11-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+          {% endfor %}
+      </ul>
+      {% endif %}
             <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <form action="{% url 'otp_verify_view' %}" method="post">
                     {% csrf_token %}
@@ -48,9 +64,7 @@
                     <div>
                         <label for="otp" class="block text-sm font-medium leading-5  text-gray-700">Enter OTP</label>
                         <div class="mt-1 relative rounded-md shadow-sm">
-                            <input id="otp" name="otp" placeholder="0 0 0 0 0 0" type="text"
-                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                                required>
+                            <input id="otp" name="otp" placeholder="0 0 0 0 0 0" type="text" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" required>
                             <div class="hidden absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                 <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -60,33 +74,28 @@
                             </div>
                         </div>
                     </div>
-
+    
                     <div class="mt-6">
-                        <label for="new_password" class="block text-sm font-medium leading-5 text-gray-700">New
-                            password</label>
+                        <label for="new_password" class="block text-sm font-medium leading-5 text-gray-700">New password</label>
                         <div class="mt-1 rounded-md shadow-sm">
-                            <input id="new_password" name="new_password" type="password" required placeholder="********"
-                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                            <input id="new_password" name="new_password" type="password" required placeholder="********" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                         </div>
                     </div>
                     <div class="mt-6">
-                        <label for="confirm_password" class="block text-sm font-medium leading-5 text-gray-700">Confirm
-                            password</label>
+                        <label for="confirm_password" class="block text-sm font-medium leading-5 text-gray-700">Confirm password</label>
                         <div class="mt-1 rounded-md shadow-sm">
-                            <input id="confirm_password" name="confirm_password" type="password" required
-                                placeholder="********"
-                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                            <input id="confirm_password" name="confirm_password" type="password" required placeholder="********" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                         </div>
                     </div>
-
+    
                     <div class="mt-6 flex items-center justify-between">
-                        <div class="text-sm leading-5">
-                            <a href="#"
-                                class="font-medium text-blue-500 hover:text-blue-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                                Resend OTP
-                            </a>
+                            <div class="text-sm leading-5">
+                                <a href="#"
+                                    class="font-medium text-blue-500 hover:text-blue-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+                                    Resend OTP
+                                </a>
                         </div>
-
+    
                         <div class="text-sm leading-5">
                             <a href="{% url 'login_view' %}"
                                 class="font-medium text-blue-500 hover:text-blue-500 focus:outline-none focus:underline transition ease-in-out duration-150">
@@ -94,20 +103,18 @@
                             </a>
                         </div>
                     </div>
-
+    
                     <div class="mt-6">
                         <span class="block w-full rounded-md shadow-sm">
-                            <button type="submit"
-                                class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                                Verify
-                            </button>
-                        </span>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                  Verify
+                </button>
+              </span>
                     </div>
                 </form>
-
+    
             </div>
         </div>
     </div>
 </body>
-
 </html>
