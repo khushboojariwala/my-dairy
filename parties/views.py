@@ -20,7 +20,4 @@ def add_task(request):
         new_task.save()
         messages.info(request, 'Task Added.')
         return redirect('tasks_view')
-
-        # print(party_id, title, content, total_payment)
-
     return render(request, 'tasks.html')

@@ -6,7 +6,8 @@ from django.conf import settings
 
 from master.models import base_table, counter_table
 from master.utils.unique import generate_password
-# Create your models here.
+
+
 class labor_register(base_table):
     labor_id = models.CharField(primary_key=True, max_length=50, blank=True)
     first_name = models.CharField(max_length=255, null=True)

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+
+
 {% block title %}
 Add-Task-Payment
 {% endblock %}
@@ -11,10 +13,6 @@ Add-Task-Payment
         <h3
             class="self-center text-xl mb-6 font-semibold whitespace-nowrap dark:text-white bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
             Task Account - [{{task.task_id}}]</h3>
-
-
-
-
         <div
             class="w-full my-4 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
             <a
@@ -36,10 +34,6 @@ Add-Task-Payment
 
             </a>
         </div>
-
-
-
-
         {% if task.remaining_payment != 0 %}
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="payment_entry">
@@ -130,5 +124,4 @@ Add-Task-Payment
         </table>
     </div>
 </div>
-
 {% endblock %}

@@ -61,7 +61,8 @@ class payment_installment(base_table):
     task_id = models.ForeignKey(task, on_delete=models.CASCADE)
     labor_id = models.ForeignKey(labor_register, on_delete=models.CASCADE)
     payment_entry = models.FloatField(default=0)
-    paid_date = models.DateField(default=timezone.now())
+    paid_date = models.DateField(default=timezone.now)
+    
     def __str__(self):
         return self.payment_id
     
@@ -70,7 +71,5 @@ class payment_installment(base_table):
             counters = counter_table.objects.get(id=1)
             counters.last_payment_entry_id += 1
             counters.save()
-            print(counters.last_payment_entry_id)
             self.payment_id = str(self.task_id) + '_' + str(counters.last_payment_entry_id)
-            print(self.payment_id)
         super(payment_installment, self).save(*args, **kwargs)
